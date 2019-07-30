@@ -1,0 +1,24 @@
+dist: xenial
+language: minimal
+sudo: required
+addons:
+  apt:
+    packages:
+    - bsdtar
+    - tree
+    - debootstrap
+    - jq
+    - binfmt-support
+    - u-boot-tools
+script:
+- make build_alpine=y build_archlinux=y build_ubuntu=y build_debian=y build
+- tree -hn output
+deploy:
+  provider: releases
+  skip_cleanup: true
+  overwrite: true
+  file_glob: true
+  file: output/release/*.xz
+  on:
+    repo: hanwckf/build-catdrive
+    tags: true
