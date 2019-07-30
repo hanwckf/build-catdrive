@@ -18,7 +18,7 @@ apt clean
 mount -t devpts none /dev/pts
 
 apt $apt_arg update && \
-	apt $apt_arg install aptitude openssh-server haveged net-tools network-manager parted
+	apt $apt_arg install aptitude openssh-server haveged net-tools network-manager parted u-boot-tools
 apt clean
 
 aptitude search ~pstandard ~prequired ~pimportant -F "%p" |xargs apt $apt_arg install
@@ -43,6 +43,7 @@ ln -sf /lib/systemd/system/getty@.service ./etc/systemd/system/getty.target.want
 echo "ttyMV0" >> ./etc/securetty
 echo "/dev/mmcblk0p1 / ext4 defaults,noatime,nodiratime,errors=remount-ro 0 1" >> ./etc/fstab
 echo "vm.zone_reclaim_mode=1" > /etc/sysctl.d/99-vm-reclaim.conf
+echo "/dev/mtd1 0x0000 0x10000 0x10000" > /etc/fw_env.config
 echo "catdrive" > ./etc/hostname
 echo "root:admin" |chpasswd
 

@@ -34,13 +34,15 @@ pacman-key --init
 pacman-key --populate archlinuxarm
 
 sed -i 's/CheckSpace/#CheckSpace/' ./etc/pacman.conf
-pacman -Sy --noconfirm hdparm parted
+pacman -Sy --noconfirm hdparm parted uboot-tools
 sed -i 's/#CheckSpace/CheckSpace/' ./etc/pacman.conf
 
 cat <<EOF > ./etc/udev/rules.d/99-hdparm.rules
 ACTION=="add", SUBSYSTEM=="block", KERNEL=="sd*",ENV{ID_BUS}=="ata", ENV{DEVTYPE}=="disk", RUN+="/usr/bin/hdparm -S 120 \$env{DEVNAME}"
 
 EOF
+
+echo "/dev/mtd1 0x0000 0x10000 0x10000" > /etc/fw_env.config
 
 # clean
 pacman -Sc --noconfirm

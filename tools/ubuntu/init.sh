@@ -26,7 +26,7 @@ else
 	yes | unminimize
 fi
 
-apt $apt_arg install net-tools openssh-server dialog cpufrequtils haveged parted
+apt $apt_arg install net-tools openssh-server dialog cpufrequtils haveged parted u-boot-tools
 apt -f $apt_arg install
 apt $apt_arg purge irqbalance && apt $apt_arg autoremove
 apt clean
@@ -68,6 +68,7 @@ ln -sf /lib/systemd/system/getty@.service ./etc/systemd/system/getty.target.want
 echo "ttyMV0" >> ./etc/securetty
 echo "/dev/mmcblk0p1 / ext4 defaults,noatime,nodiratime,errors=remount-ro 0 1" >> ./etc/fstab
 echo "vm.zone_reclaim_mode=1" > /etc/sysctl.d/99-vm-reclaim.conf
+echo "/dev/mtd1 0x0000 0x10000 0x10000" > /etc/fw_env.config
 echo "catdrive" > ./etc/hostname
 echo "root:admin" |chpasswd
 
