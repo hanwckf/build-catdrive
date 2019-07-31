@@ -53,7 +53,6 @@ $(DL)/$(ALPINE_PKG):
 	$(WGET_PKG) $(ALPINE_URL_BASE)/$(ALPINE_PKG)
 
 alpine_clean:
-	rm -f $(DL)/$(ALPINE_PKG)
 
 $(RESCUE_ROOTFS):
 	@[ ! -f $(RESCUE_ROOTFS) ] && make rescue
@@ -104,7 +103,6 @@ $(DL)/$(UBUNTU_PKG):
 	$(WGET_PKG) $(UBUNTU_URL_BASE)/$(UBUNTU_PKG)
 
 ubuntu_clean:
-	rm -f $(DL)/$(UBUNTU_PKG)
 
 ifeq ($(build_ubuntu),y)
 ubuntu: ubuntu_dl $(RESCUE_ROOTFS)

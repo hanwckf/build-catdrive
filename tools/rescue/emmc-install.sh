@@ -8,6 +8,6 @@ disk="/dev/mmcblk0"
 
 echo "flash emmc..."
 
-pv -pterb $img | dd of=$disk conv=fsync
+pv -pterb $img | dd of=$disk conv=fsync bs=2M
 
-[ "$?" = "0" ] && echo "flash done!" || echo "flash fail!"
+[ "$?" = "0" ] && echo "flash done, please unplug USB drive and reboot now!" || echo "flash fail!"
