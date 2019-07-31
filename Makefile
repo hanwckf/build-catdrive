@@ -1,5 +1,5 @@
 KERNEL_BSP := https://github.com/hanwckf/linux-marvell/releases/download
-RELEASE_TAG = v2019-07-27
+RELEASE_TAG = v2019-07-30
 DTB := armada-3720-catdrive.dtb
 
 DTB_URL := $(KERNEL_BSP)/$(RELEASE_TAG)/$(DTB)
