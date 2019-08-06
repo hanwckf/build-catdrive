@@ -19,6 +19,8 @@ deploy:
   overwrite: true
   file_glob: true
   file: output/release/*.xz
+  api_key:
+    secure: jz9VEWr4bRTHCq2aC08J/dyHTBaW7HvN0un907MA/biGAr+wbte5TZwFHzWWl4IPmp92nLMNYLOPOP54vW/zQm8l8lTtq8Z2QNIHc7M3YpZ6T66wjI6DGnNOCnXVKuwc8PGzLkDf4dAQtVkLaSX6aoeVYmRHPHCmKM8s8ibYQRloXwSNfd9esUm+jSUDCsLrCqokKD/Fd1PE2KdcZ5uHiif0oOne737uZpRjl2WrbCFEi+8D5BF2zKc7+S9HQ3WiALEP7TVfayAN4DatY6O6BLIzodtTj1EwVxEMHvYlhZilYro4RrZzi2bHYFUe3WKY6ULkcxpergvXTGlRal3JGg7c79X35Ck9XVQ3UIULhmKuJ+77RXjgf/mjNyYao07a1/j2V2VAUYqR7xEB3C77fVfjo5txaCfPMFoK7JIX3xjLH3TjVjqMU8pXwD9M9tk2ljHZzszUp1rLE+XY0OD2z2sgjBrx+v9V9ZICsGPBPw799JFR7kG1hUVr0nblxdy0k+auJOFZfsq4xGC+3GLVP/5SH69PJ2amHcvLXMUQ+yeejrywukVX6D3u1lrYDrK12BzlDMt2Nagm+nAudxxW/r8jirC4vk7ce26Ihf23/USUJrswLBymWat8kSMwuwFFU4x2ZZ5gynhIg0j9dhMuBRfI7XaMrQtHHFVJI0s5C4c=
   on:
     repo: hanwckf/build-catdrive
     tags: true
