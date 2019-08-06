@@ -11,7 +11,7 @@ addons:
     - binfmt-support
     - u-boot-tools
 script:
-- make build_alpine=y build_archlinux=y build_ubuntu=y build_debian=y build
+- make build_archlinux=y build_ubuntu=y build_debian=y build
 - tree -hn output
 deploy:
   provider: releases
