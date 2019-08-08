@@ -11,5 +11,6 @@ echo 2 > /sys/class/leds/red/blink
 
 pv -pterb $img | dd of=$disk conv=fsync bs=2M
 
-[ "$?" = "0" ] && echo "flash done, please unplug USB drive and reboot now!" || echo "flash fail!"
+[ "$?" = "0" ] && echo "flash done, please poweroff now then unplug USB drive!" || echo "flash fail!"
 echo 0 > /sys/class/leds/red/blink
+
