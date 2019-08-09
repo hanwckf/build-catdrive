@@ -20,7 +20,7 @@ DTB=armada-3720-catdrive.dtb
 
 chroot_prepare() {
 	if [ -z "$TRAVIS" ]; then
-		sed -i 's#http://ports.ubuntu.com#http://mirrors.ustc.edu.cn#' $rootfs_mount_point/etc/apt/sources.list
+		sed -i 's#http://ports.ubuntu.com#http://mirrors.huaweicloud.com#' $rootfs_mount_point/etc/apt/sources.list
 		echo "nameserver 119.29.29.29" > $rootfs_mount_point/etc/resolv.conf
 	else
 		echo "nameserver 8.8.8.8" > $rootfs_mount_point/etc/resolv.conf
@@ -35,7 +35,7 @@ chroot_post() {
 	if [ -z "$TRAVIS" ]; then
 		sed -i 's#http://#https://#' $rootfs_mount_point/etc/apt/sources.list
 	else
-		sed -i 's#http://ports.ubuntu.com#https://mirrors.ustc.edu.cn#' $rootfs_mount_point/etc/apt/sources.list
+		sed -i 's#http://ports.ubuntu.com#https://mirrors.huaweicloud.com#' $rootfs_mount_point/etc/apt/sources.list
 	fi
 }
 
