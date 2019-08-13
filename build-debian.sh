@@ -20,7 +20,7 @@ DTB=armada-3720-catdrive.dtb
 
 chroot_prepare() {
 	if [ -z "$TRAVIS" ]; then
-		echo "deb https://mirrors.ustc.edu.cn/debian/ ${os_ver} main contrib non-free" > $rootfs_mount_point/etc/apt/sources.list
+		echo "deb https://mirrors.huaweicloud.com/debian/ ${os_ver} main contrib non-free" > $rootfs_mount_point/etc/apt/sources.list
 		echo "nameserver 119.29.29.29" > $rootfs_mount_point/etc/resolv.conf
 	else
 		echo "deb http://httpredir.debian.org/debian/ ${os_ver} main contrib non-free" > $rootfs_mount_point/etc/apt/sources.list
@@ -35,17 +35,17 @@ ext_init_param() {
 chroot_post() {
 	rm -f $rootfs_mount_point/etc/resolv.conf
 	cat <<-EOF > $rootfs_mount_point/etc/apt/sources.list
-deb https://mirrors.ustc.edu.cn/debian/ ${os_ver} main contrib non-free
-deb https://mirrors.ustc.edu.cn/debian/ ${os_ver}-updates main contrib non-free
-deb https://mirrors.ustc.edu.cn/debian-security ${os_ver}/updates main contrib non-free
-deb https://mirrors.ustc.edu.cn/debian/ ${os_ver}-backports main contrib non-free
+deb https://mirrors.huaweicloud.com/debian/ ${os_ver} main contrib non-free
+deb https://mirrors.huaweicloud.com/debian/ ${os_ver}-updates main contrib non-free
+deb https://mirrors.huaweicloud.com/debian-security ${os_ver}/updates main contrib non-free
+deb https://mirrors.huaweicloud.com/debian/ ${os_ver}-backports main contrib non-free
 
 	EOF
 }
 
 generate_rootfs() {
 	local rootfs=$1
-	mirrorurl="https://mirrors.ustc.edu.cn/debian"
+	mirrorurl="https://mirrors.huaweicloud.com/debian"
 	if [ -n "$TRAVIS" ]; then
 		mirrorurl="http://httpredir.debian.org/debian"
 	fi
