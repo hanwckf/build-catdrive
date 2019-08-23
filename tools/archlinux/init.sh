@@ -42,7 +42,7 @@ ACTION=="add", SUBSYSTEM=="block", KERNEL=="sd*",ENV{ID_BUS}=="ata", ENV{DEVTYPE
 
 EOF
 
-echo "/dev/mtd1 0x0000 0x10000 0x10000" > /etc/fw_env.config
+echo "/dev/mtd1 0x0000 0x10000 0x10000" > ./etc/fw_env.config
 
 # clean
 pacman -Sc --noconfirm
