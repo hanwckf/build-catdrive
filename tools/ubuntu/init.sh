@@ -28,7 +28,7 @@ fi
 
 apt $apt_arg install net-tools openssh-server dialog cpufrequtils haveged parted u-boot-tools
 apt -f $apt_arg install
-apt $apt_arg purge irqbalance ureadahead && apt $apt_arg autoremove
+apt $apt_arg purge irqbalance ureadahead unattended-upgrades && apt $apt_arg autoremove
 apt clean
 
 systemctl enable systemd-networkd
