@@ -13,7 +13,7 @@ systemctl set-default multi-user.target
 
 echo "ttyMV0" >> ./etc/securetty
 
-echo "/dev/mmcblk0p1 / ext4 defaults,noatime,nodiratime,errors=remount-ro 0 1" >> ./etc/fstab
+echo "/dev/root / ext4 defaults,noatime,nodiratime,errors=remount-ro 0 1" >> ./etc/fstab
 
 # set ntp server
 sed -i '/^#NTP/cNTP=time1.aliyun.com 2001:470:0:50::2' ./etc/systemd/timesyncd.conf
@@ -48,6 +48,8 @@ echo "/dev/mtd1 0x0000 0x10000 0x10000" > ./etc/fw_env.config
 pacman -Sc --noconfirm
 rm -rf ./etc/pacman.d/gnupg
 killall -9 gpg-agent
+
+rm -rf ./var/log/journal
 
 umount /dev
 umount /sys

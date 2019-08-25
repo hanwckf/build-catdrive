@@ -28,12 +28,11 @@ fi
 
 apt $apt_arg install net-tools openssh-server dialog cpufrequtils haveged parted u-boot-tools
 apt -f $apt_arg install
-apt $apt_arg purge irqbalance && apt $apt_arg autoremove
+apt $apt_arg purge irqbalance ureadahead && apt $apt_arg autoremove
 apt clean
 
 systemctl enable systemd-networkd
 systemctl disable ondemand
-systemctl disable ureadahead
 systemctl set-default multi-user.target
 
 cat <<EOF > ./etc/default/cpufrequtils
@@ -67,12 +66,13 @@ sed -i '/^#NTP/cNTP=time1.aliyun.com 2001:470:0:50::2' ./etc/systemd/timesyncd.c
 sed -i 's/ENABLED=1/ENABLED=0/' ./etc/default/motd-news
 ln -sf /lib/systemd/system/getty@.service ./etc/systemd/system/getty.target.wantsgetty@ttyMV0.service
 echo "ttyMV0" >> ./etc/securetty
-echo "/dev/mmcblk0p1 / ext4 defaults,noatime,nodiratime,errors=remount-ro 0 1" >> ./etc/fstab
+echo "/dev/root / ext4 defaults,noatime,nodiratime,errors=remount-ro 0 1" >> ./etc/fstab
 echo "vm.zone_reclaim_mode=1" > ./etc/sysctl.d/99-vm-reclaim.conf
 echo "/dev/mtd1 0x0000 0x10000 0x10000" > ./etc/fw_env.config
 echo "catdrive" > ./etc/hostname
 echo "root:admin" |chpasswd
 
+rm -rf ./var/log/journal
 rm -rf ./var/cache
 rm -rf ./var/lib/apt/*
 rm -f ./usr/sbin/policy-rc.d
