@@ -37,7 +37,7 @@ $(DL_KERNEL)/modules.tar.xz:
 	$(WGET_KERNEL) $(KMOD_URL)
 
 ALPINE_BRANCH := v3.10
-ALPINE_VERSION := 3.10.1
+ALPINE_VERSION := 3.10.4
 ALPINE_PKG := alpine-minirootfs-$(ALPINE_VERSION)-aarch64.tar.gz
 RESCUE_ROOTFS := tools/rescue/rescue-alpine-catdrive-$(ALPINE_VERSION)-aarch64.tar.xz
 
@@ -90,7 +90,7 @@ else
 archlinux:
 endif
 
-UBUNTU_PKG := ubuntu-base-18.04.2-base-arm64.tar.gz
+UBUNTU_PKG := ubuntu-base-18.04.4-base-arm64.tar.gz
 ifneq ($(TRAVIS),)
 UBUNTU_URL_BASE := http://cdimage.ubuntu.com/ubuntu-base/releases/bionic/release
 else

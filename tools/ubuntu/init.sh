@@ -4,6 +4,7 @@ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 mount -t proc none /proc
 mount -t sysfs none /sys
+mount -t devtmpfs none /dev
 mount -t devpts none /dev/pts
 
 export DEBIAN_FRONTEND=noninteractive
@@ -64,7 +65,6 @@ ln -sf /usr/share/zoneinfo/Asia/Shanghai ./etc/localtime
 sed -i '/^#PermitRootLogin/cPermitRootLogin yes' ./etc/ssh/sshd_config
 sed -i '/^#NTP/cNTP=time1.aliyun.com 2001:470:0:50::2' ./etc/systemd/timesyncd.conf
 sed -i 's/ENABLED=1/ENABLED=0/' ./etc/default/motd-news
-ln -sf /lib/systemd/system/getty@.service ./etc/systemd/system/getty.target.wantsgetty@ttyMV0.service
 echo "ttyMV0" >> ./etc/securetty
 echo "/dev/root / ext4 defaults,noatime,nodiratime,errors=remount-ro 0 1" >> ./etc/fstab
 echo "vm.zone_reclaim_mode=1" > ./etc/sysctl.d/99-vm-reclaim.conf
@@ -78,5 +78,7 @@ rm -rf ./var/lib/apt/*
 rm -f ./usr/sbin/policy-rc.d
 
 umount /dev/pts
+umount /dev
 umount /sys
 umount /proc
+
