@@ -7,7 +7,7 @@ set -o pipefail
 
 os="ubuntu"
 rootsize=850
-origin="arm64"
+origin="base-arm64"
 target="catdrive"
 
 tmpdir="tmp"

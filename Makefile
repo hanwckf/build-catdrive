@@ -71,7 +71,7 @@ ARCHLINUX_PKG := ArchLinuxARM-aarch64-latest.tar.gz
 ifneq ($(TRAVIS),)
 ARCHLINUX_URL_BASE := http://os.archlinuxarm.org/os
 else
-ARCHLINUX_URL_BASE := https://mirrors.tuna.tsinghua.edu.cn/archlinuxarm/os
+ARCHLINUX_URL_BASE := https://mirrors.163.com/archlinuxarm/os
 endif
 
 archlinux_dl: dl_kernel $(DL)/$(ARCHLINUX_PKG)
