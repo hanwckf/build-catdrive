@@ -43,7 +43,7 @@ RESCUE_ROOTFS := tools/rescue/rescue-alpine-catdrive-$(ALPINE_VERSION)-aarch64.t
 ifneq ($(TRAVIS),)
 ALPINE_URL_BASE := http://dl-cdn.alpinelinux.org/alpine/$(ALPINE_BRANCH)/releases/aarch64
 else
-ALPINE_URL_BASE := https://mirrors.tuna.tsinghua.edu.cn/alpine/$(ALPINE_BRANCH)/releases/aarch64
+ALPINE_URL_BASE := https://mirrors.huaweicloud.com/alpine/$(ALPINE_BRANCH)/releases/aarch64
 endif
 
 alpine_dl: dl_kernel $(DL)/$(ALPINE_PKG)
@@ -93,7 +93,7 @@ UBUNTU_PKG := ubuntu-base-18.04.4-base-arm64.tar.gz
 ifneq ($(TRAVIS),)
 UBUNTU_URL_BASE := http://cdimage.ubuntu.com/ubuntu-base/releases/bionic/release
 else
-UBUNTU_URL_BASE := https://mirrors.tuna.tsinghua.edu.cn/ubuntu-cdimage/ubuntu-base/releases/bionic/release
+UBUNTU_URL_BASE := https://mirrors.huaweicloud.com/ubuntu-cdimage/ubuntu-base/releases/bionic/release
 endif
 
 ubuntu_dl: dl_kernel $(DL)/$(UBUNTU_PKG)
