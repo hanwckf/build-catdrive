@@ -54,13 +54,18 @@ generate_rootfs() {
 		--include=apt-utils --arch=arm64 --variant=minbase --foreign --verbose $os_ver $rootfs $mirrorurl
 }
 
-add_resizemmc() {
+add_services() {
+	mkdir -p $rootfs_mount_point/etc/systemd/system/basic.target.wants
+
 	echo "add resize mmc script"
 	cp ./tools/systemd/resizemmc.service $rootfs_mount_point/lib/systemd/system/
 	cp ./tools/systemd/resizemmc.sh $rootfs_mount_point/sbin/
-	mkdir -p $rootfs_mount_point/etc/systemd/system/basic.target.wants
 	ln -sf /lib/systemd/system/resizemmc.service $rootfs_mount_point/etc/systemd/system/basic.target.wants/resizemmc.service
 	touch $rootfs_mount_point/root/.need_resize
+
+	echo "add sshd keygen service"
+	cp ./tools/systemd/sshdgenkeys.service $rootfs_mount_point/lib/systemd/system/
+	ln -sf /lib/systemd/system/sshdgenkeys.service $rootfs_mount_point/etc/systemd/system/basic.target.wants/sshdgenkeys.service
 }
 
 gen_new_name() {

@@ -39,7 +39,7 @@ chroot_post() {
 	fi
 }
 
-add_resizemmc() {
+add_services() {
 	if [ "$BUILD_RESCUE" != "y" ]; then
 		echo "add resize mmc script"
 		cp ./tools/${os}/resizemmc.sh $rootfs_mount_point/sbin/resizemmc.sh

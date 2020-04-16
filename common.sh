@@ -69,8 +69,8 @@ func_generate() {
 	rm -f $rootfs_mount_point/init.sh
 	[ -n "$qemu" ] && rm -f $rootfs_mount_point/$qemu || rm -f $rootfs_mount_point/usr/bin/qemu-aarch64-static
 
-	# add resize script
-	add_resizemmc
+	# add services
+	add_services
 
 	# add /boot
 	echo "add /boot"

@@ -51,6 +51,7 @@ echo "/dev/mtd1 0x0000 0x10000 0x10000" > ./etc/fw_env.config
 echo "catdrive" > ./etc/hostname
 echo "root:admin" |chpasswd
 
+rm -f ./etc/ssh/ssh_host_*
 rm -rf ./var/log/journal
 rm -rf ./var/cache
 rm -rf ./var/lib/apt/*

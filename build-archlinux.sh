@@ -40,7 +40,7 @@ chroot_post() {
 	fi
 }
 
-add_resizemmc() {
+add_services() {
 	echo "add resize mmc script"
 	cp ./tools/systemd/resizemmc.service $rootfs_mount_point/lib/systemd/system/
 	cp ./tools/systemd/resizemmc.sh $rootfs_mount_point/sbin/
