@@ -10,11 +10,9 @@ TARGETS := debian archlinux alpine ubuntu
 
 DL := dl
 DL_KERNEL := $(DL)/kernel/$(RELEASE_TAG)
-
-WGET_KERNEL := wget -P $(DL_KERNEL)
-WGET_PKG := wget -P $(DL)
-
 OUTPUT := output
+
+CURL := curl -O -L
 
 help:
 	@echo "Usage: make build_[system1]=y build_[system2]=y build"
@@ -28,13 +26,13 @@ clean: $(TARGETS:%=%_clean)
 dl_kernel: $(DL_KERNEL)/$(DTB) $(DL_KERNEL)/Image $(DL_KERNEL)/modules.tar.xz
 
 $(DL_KERNEL)/$(DTB):
-	$(WGET_KERNEL) $(DTB_URL)
+	( cd $(DL_KERNEL); $(CURL) $(DTB_URL) )
 
 $(DL_KERNEL)/Image:
-	$(WGET_KERNEL) $(KERNEL_URL)
+	( cd $(DL_KERNEL); $(CURL) $(KERNEL_URL) )
 
 $(DL_KERNEL)/modules.tar.xz:
-	$(WGET_KERNEL) $(KMOD_URL)
+	( cd $(DL_KERNEL); $(CURL) $(KMOD_URL) )
 
 ALPINE_BRANCH := v3.10
 ALPINE_VERSION := 3.10.4
@@ -50,7 +48,7 @@ endif
 alpine_dl: dl_kernel $(DL)/$(ALPINE_PKG)
 
 $(DL)/$(ALPINE_PKG):
-	$(WGET_PKG) $(ALPINE_URL_BASE)/$(ALPINE_PKG)
+	( cd $(DL); $(CURL) $(ALPINE_URL_BASE)/$(ALPINE_PKG) )
 
 alpine_clean:
 
@@ -78,7 +76,7 @@ endif
 archlinux_dl: dl_kernel $(DL)/$(ARCHLINUX_PKG)
 
 $(DL)/$(ARCHLINUX_PKG):
-	$(WGET_PKG) $(ARCHLINUX_URL_BASE)/$(ARCHLINUX_PKG)
+	( cd $(DL); $(CURL) $(ARCHLINUX_URL_BASE)/$(ARCHLINUX_PKG) )
 
 archlinux_clean:
 	rm -f $(DL)/$(ARCHLINUX_PKG)
@@ -100,7 +98,7 @@ endif
 ubuntu_dl: dl_kernel $(DL)/$(UBUNTU_PKG)
 
 $(DL)/$(UBUNTU_PKG):
-	$(WGET_PKG) $(UBUNTU_URL_BASE)/$(UBUNTU_PKG)
+	( cd $(DL); $(CURL) $(UBUNTU_URL_BASE)/$(UBUNTU_PKG) )
 
 ubuntu_clean:
 
