@@ -50,6 +50,8 @@ rm -rf ./etc/pacman.d/gnupg
 killall -9 gpg-agent
 
 rm -rf ./var/log/journal
+rm -f ./var/lib/dbus/machine-id
+: > ./etc/machine-id
 
 umount /dev
 umount /sys

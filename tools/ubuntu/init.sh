@@ -77,6 +77,8 @@ rm -rf ./var/log/journal
 rm -rf ./var/cache
 rm -rf ./var/lib/apt/*
 rm -f ./usr/sbin/policy-rc.d
+rm -f ./var/lib/dbus/machine-id
+: > ./etc/machine-id
 
 umount /dev/pts
 umount /dev
